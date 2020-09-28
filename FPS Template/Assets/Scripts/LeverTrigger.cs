@@ -11,19 +11,12 @@ public class LeverTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            MoveableBlock.transform.position = BlockDestination.transform.position;
+        }
         
-        MoveableBlock.transform.position = BlockDestination.transform.position;
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
