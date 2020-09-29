@@ -34,6 +34,7 @@ public class TurretShooting : MonoBehaviour
         GameObject rocketInstance = GameObject.Instantiate<GameObject>(rocketPreFab);
 
         rocketInstance.transform.position = spawnpoint.transform.position;
+        rocketInstance.transform.rotation = spawnpoint.transform.rotation;
 
         fireTimer = 0;
     }

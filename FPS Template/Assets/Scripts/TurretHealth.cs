@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TurretHealth : MonoBehaviour
 {
+
+    public GameObject spawnpoint;
     private void OnCollisionEnter(Collision collision)
     {
-        
-        
-            Destroy(gameObject);
+
+        spawnpoint.gameObject.SetActive(false);
+          
         
         
     }

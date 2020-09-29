@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTimer: 1
   fireInterval: 1
-  rocketPreFab: {fileID: 1769314691642616587, guid: 694eb041e7f9e4349a7175efa02155a5,
+  rocketPreFab: {fileID: 1892379113442182827, guid: b080f8967684fe249a711f2013e72f79,
     type: 3}
   spawnpoint: {fileID: 6913094686439762690}
 --- !u!114 &6913094685339129781
