@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     public Slider slider;
 
     public GameObject[] Turrets;
-
+    public Text gameOverText;
+    public Button continueButton;
+    
+    public GameObject FpsController;
     
 
 
@@ -32,12 +35,14 @@ public class GameManager : MonoBehaviour
     {
         m_GameState = GameState.Start;
         slider.gameObject.SetActive(false);
-
+        gameOverText.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
     {
         
+
     }
 
     // Update is called once per frame
@@ -48,7 +53,8 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Start:
 
-
+                FpsController.GetComponent<PlayerHealth>().currentHealth = 100f;
+                slider.value = FpsController.GetComponent<PlayerHealth>().currentHealth;
 
 
 
@@ -59,30 +65,42 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Playing:
+                bool isGameOver = false;
 
+                if(IsPlayerDead() == true)
+                {
+                    isGameOver = true;
+                }
+                
+                if(isGameOver == true)
+                {
+                    m_GameState = GameState.GameOver;
 
+                }
+                
 
 
 
                 break;
+
+               case GameState.GameOver:
+                slider.gameObject.SetActive(false);
+                continueButton.gameObject.SetActive(true);
+                gameOverText.gameObject.SetActive(true);
+                BackgroundPanal.gameObject.SetActive(true);
+
+
+                    break;
+
+
         }
-               
-          
-           
-        
-        
-        
-
-
-
-
-
-
+   
 
     }
 
     public void OnPlay()
     {
+        
         BackgroundPanal.gameObject.SetActive(false);
         PlayButton.gameObject.SetActive(false);
         QuitButton.gameObject.SetActive(false);
@@ -99,9 +117,24 @@ public class GameManager : MonoBehaviour
         
     }
 
+    private bool IsPlayerDead()
+    {
+        if (FpsController.GetComponent<PlayerHealth>().currentHealth <= 0f)
+        {
+            return true;
+        }
+        return false;
+    }
 
-
-
+    public void OnContinue()
+    {
+        continueButton.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
+        PlayButton.gameObject.SetActive(true);
+        QuitButton.gameObject.SetActive(true);
+        TitleScreen.gameObject.SetActive(true);
+        m_GameState = GameState.Start;
+    }
 
 
 

@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretHealth : MonoBehaviour
+public class Winning : MonoBehaviour
 {
-
-    public GameObject spawnpoint;
     private void OnCollisionEnter(Collision collision)
     {
-
-       gameObject.SetActive(false);
-          
-        
         
     }
-
 }

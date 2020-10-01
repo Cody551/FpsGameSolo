@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PlayerHealth : MonoBehaviour
 {
     public float startingHealth = 100;                      //total health
-    private float currentHealth;                            // current health   
+    public float currentHealth;                            // current health   
     private bool dead;                                          //if player is dead
 
     public GameObject rocket;
     public Slider slider;
+   
+    public GameObject mainRespawnpoint;
+
+    private void OnEnable()
+    {
+        
+    }
 
     void Start()
     {
@@ -32,14 +40,33 @@ public class PlayerHealth : MonoBehaviour
 
         SetHealthUI();
 
-
+        if (currentHealth <= 0f )
+        {
+            OnDeath();
+            
+        }
 
     }
 
-    
+    public void OnDeath()
+    {
+
+        
 
 
 
+      
+
+       
+
+        gameObject.transform.position = mainRespawnpoint.transform.position;
+       gameObject.transform.rotation = mainRespawnpoint.transform.rotation;
+        Physics.SyncTransforms();
+
+    }
+
+
+   
 
 
 
@@ -50,8 +77,6 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         
-        {
-
-        }
+        
     }
 }
