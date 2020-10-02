@@ -4,8 +4,27 @@ using UnityEngine;
 
 public class Winning : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    public bool WinningTrigger = false;
+
+    [SerializeField]
+    private GameObject player;
+    
+     
+    
+    private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("box is triggered");
+        if (other.CompareTag("Player"))
+        {
+            WinningTrigger = true;
+                Debug.Log("yummy");
+            
+        }
         
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        WinningTrigger = false;
     }
 }

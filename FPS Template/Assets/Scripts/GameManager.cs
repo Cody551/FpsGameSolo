@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Button continueButton;
     
     public GameObject FpsController;
+    public GameObject winningCubeTrigger;
+    public Text winningText;
     
 
 
@@ -26,7 +28,8 @@ public class GameManager : MonoBehaviour
     {
         Start,
         Playing,
-        GameOver
+        GameOver,
+        Win
     };
     private GameState m_GameState;
     public GameState State { get { return m_GameState; } }
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
         slider.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
+        winningText.gameObject.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour
 
                 FpsController.GetComponent<PlayerHealth>().currentHealth = 100f;
                 slider.value = FpsController.GetComponent<PlayerHealth>().currentHealth;
+                
 
 
 
@@ -67,11 +72,14 @@ public class GameManager : MonoBehaviour
             case GameState.Playing:
                 bool isGameOver = false;
 
-                if(IsPlayerDead() == true)
+                if (IsPlayerDead() == true)
                 {
                     isGameOver = true;
                 }
-                
+                else if (winningCubeTrigger.GetComponent<Winning>().WinningTrigger == true) 
+                {
+                    m_GameState = GameState.Win;
+                }
                 if(isGameOver == true)
                 {
                     m_GameState = GameState.GameOver;
@@ -91,7 +99,14 @@ public class GameManager : MonoBehaviour
 
 
                     break;
+            case GameState.Win:
+                slider.gameObject.SetActive(false);
+                BackgroundPanal.SetActive(true);
+                continueButton.gameObject.SetActive(true);
+                winningText.gameObject.SetActive(true);
 
+
+                break;
 
         }
    
@@ -106,6 +121,7 @@ public class GameManager : MonoBehaviour
         QuitButton.gameObject.SetActive(false);
         TitleScreen.gameObject.SetActive(false);
         slider.gameObject.SetActive(true);
+        
 
         m_GameState = GameState.Playing;
 
@@ -133,6 +149,9 @@ public class GameManager : MonoBehaviour
         PlayButton.gameObject.SetActive(true);
         QuitButton.gameObject.SetActive(true);
         TitleScreen.gameObject.SetActive(true);
+        winningText.gameObject.SetActive(false);
+
+        
         m_GameState = GameState.Start;
     }
 
