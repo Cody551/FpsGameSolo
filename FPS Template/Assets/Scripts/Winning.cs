@@ -8,17 +8,19 @@ public class Winning : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
+    public GameObject mainRespawnPoint;
     
      
     
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("box is triggered");
+       
         if (other.CompareTag("Player"))
         {
             WinningTrigger = true;
-                Debug.Log("yummy");
-            
+               
+            player.gameObject.transform.position = mainRespawnPoint.transform.position;
+            Physics.SyncTransforms();
         }
         
     }

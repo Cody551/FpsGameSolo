@@ -15,10 +15,7 @@ public class PlayerHealth : MonoBehaviour
    
     public GameObject mainRespawnpoint;
 
-    private void OnEnable()
-    {
-        
-    }
+  
 
     void Start()
     {
@@ -51,13 +48,6 @@ public class PlayerHealth : MonoBehaviour
     public void OnDeath()
     {
 
-        
-
-
-
-      
-
-       
 
         gameObject.transform.position = mainRespawnpoint.transform.position;
        gameObject.transform.rotation = mainRespawnpoint.transform.rotation;
