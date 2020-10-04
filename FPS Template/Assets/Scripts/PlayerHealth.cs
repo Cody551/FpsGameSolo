@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void SetHealthUI()
     {
-        slider.value = currentHealth;
+        slider.value = currentHealth;                       //setting health value on the UI slider
     }
 
 

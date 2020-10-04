@@ -172,6 +172,8 @@ GameObject:
   - component: {fileID: 6913094685339129790}
   - component: {fileID: 6913094685339129791}
   - component: {fileID: 6913094685339129781}
+  - component: {fileID: 1483712486570183166}
+  - component: {fileID: -6014201949965680150}
   m_Layer: 0
   m_Name: 'Turret '
   m_TagString: Untagged
@@ -285,6 +287,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864e6687f65c38a4a8a1d97216a40478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnpoint: {fileID: 0}
+--- !u!114 &1483712486570183166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913094685339129788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a38aa7feb8c20a479380eee213493c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 0}
+--- !u!135 &-6014201949965680150
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913094685339129788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12.57
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6913094686439762690
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,8 +59,11 @@ public class GameManager : MonoBehaviour
 
                 FpsController.GetComponent<PlayerHealth>().currentHealth = 100f;
                 slider.value = FpsController.GetComponent<PlayerHealth>().currentHealth;
-                
 
+                for (int i = 0; i < Turrets.Length; i++)                     // loop though all thew tanks in the array
+                {
+                    Turrets[i].SetActive(true);                             // and turn them on 
+                }
 
 
 
