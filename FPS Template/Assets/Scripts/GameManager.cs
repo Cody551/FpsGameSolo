@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject FpsController;
     public GameObject winningCubeTrigger;
     public Text winningText;
+
+    public GameObject[] doorBlocks;
     
 
 
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
         winningText.gameObject.SetActive(false);
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -56,21 +59,24 @@ public class GameManager : MonoBehaviour
         switch (m_GameState)
         {
             case GameState.Start:
-
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 FpsController.GetComponent<PlayerHealth>().currentHealth = 100f;
                 slider.value = FpsController.GetComponent<PlayerHealth>().currentHealth;
 
-                for (int i = 0; i < Turrets.Length; i++)                     // loop though all thew tanks in the array
+                for (int i = 0; i < Turrets.Length; i++)                     // loop though all thew turrets in the array
                 {
                     Turrets[i].SetActive(true);                             // and turn them on 
                 }
 
+                for (int i = 0; i < doorBlocks.Length; i++)                     // loop though all thew turrets in the array
+                {
+                    doorBlocks[i].SetActive(true);                             // and turn them on 
+                }
 
 
 
-
-
-                break;
+                    break;
 
             case GameState.Playing:
                 bool isGameOver = false;
@@ -99,14 +105,18 @@ public class GameManager : MonoBehaviour
                 continueButton.gameObject.SetActive(true);
                 gameOverText.gameObject.SetActive(true);
                 BackgroundPanal.gameObject.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
 
 
-                    break;
+                break;
             case GameState.Win:
                 slider.gameObject.SetActive(false);
                 BackgroundPanal.SetActive(true);
                 continueButton.gameObject.SetActive(true);
                 winningText.gameObject.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
 
 
                 break;
@@ -124,7 +134,8 @@ public class GameManager : MonoBehaviour
         QuitButton.gameObject.SetActive(false);
         TitleScreen.gameObject.SetActive(false);
         slider.gameObject.SetActive(true);
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         m_GameState = GameState.Playing;
 

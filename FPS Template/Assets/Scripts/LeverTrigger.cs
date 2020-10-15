@@ -13,7 +13,9 @@ public class LeverTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            MoveableBlock.transform.position = BlockDestination.transform.position;
+            //MoveableBlock.transform.position = BlockDestination.transform.position;
+            MoveableBlock.SetActive(false);
+
         }
         
 
